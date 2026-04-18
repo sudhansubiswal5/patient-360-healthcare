@@ -17,8 +17,8 @@ const apiLimiter = rateLimit({
   message: { error: 'Too many requests, please try again later' },
 });
 
-router.use(authMiddleware);
 router.use(apiLimiter);
+router.use(authMiddleware);
 
 router.post('/', createAppointment);
 router.get('/patient/:patientId', getAppointmentsByPatient);
