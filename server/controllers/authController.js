@@ -23,6 +23,9 @@ const login = async (req, res) => {
     if (!match) {
       return res.status(401).json({ success: false, message: 'Invalid credentials' });
     }
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).json({ success: false, message: 'Server configuration error' });
+    }
     const token = jwt.sign(
       { id: user.id, role: user.role },
       process.env.JWT_SECRET,

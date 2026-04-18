@@ -20,10 +20,16 @@ const getAppointmentsByPatient = async (req, res) => {
   }
 };
 
+const VALID_STATUSES = ['scheduled', 'completed', 'cancelled'];
+
 const updateAppointmentStatus = async (req, res) => {
   try {
+    const { status } = req.body;
+    if (!VALID_STATUSES.includes(status)) {
+      return res.status(400).json({ success: false, message: 'Invalid status value' });
+    }
     const [updated] = await Appointment.update(
-      { status: req.body.status },
+      { status },
       { where: { id: req.params.id } }
     );
     if (!updated) {
