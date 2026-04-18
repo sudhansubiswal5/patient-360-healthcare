@@ -1,25 +1,19 @@
 const express = require('express');
 const cors = require('cors');
+const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Middleware setup
-app.use(cors()); // Enable CORS
-app.use(express.json()); // Parse JSON bodies
+app.use(cors());
+app.use(express.json());
 
 // Health check route
 app.get('/health', (req, res) => {
-    res.status(200).send({ status: 'UP' });
+  res.status(200).json({ status: 'UP' });
 });
 
-// Basic error handling
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send({ error: 'Something went wrong!' });
-});
+// Global error handler (must be last)
+app.use(errorHandler);
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+module.exports = app;
