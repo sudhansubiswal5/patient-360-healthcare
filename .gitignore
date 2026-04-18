@@ -1,0 +1,19 @@
+# Node.js
+node_modules/
+
+# Environment Variables
+.env
+.env.local
+
+# Build Output
+/dist/
+
+# Logs
+logs/
+*.log
+
+# macOS Files
+.DS_Store
+
+# Visual Studio Code Files
+.vscode/
