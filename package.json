@@ -14,11 +14,11 @@
         "express": "^4.17.1",
         "mongoose": "^6.0.12",
         "sequelize": "^6.6.5",
-        "mysql2": "^2.3.3",
-        "jsonwebtoken": "^8.5.1"
+        "mysql2": "^3.9.8",
+        "jsonwebtoken": "^9.0.0"
     },
     "devDependencies": {
-        "nodemon": "^2.0.12"
+        "nodemon": "^3.1.14"
     },
     "author": "sudhansubiswal5",
     "license": "ISC"
